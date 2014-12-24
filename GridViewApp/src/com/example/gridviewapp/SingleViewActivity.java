@@ -1,8 +1,10 @@
 package com.example.gridviewapp;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
+import android.widget.ImageView;
 
 public class SingleViewActivity extends Activity {
 
@@ -10,6 +12,17 @@ public class SingleViewActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_single_view);
+		
+		Intent i = getIntent();
+		
+		int position =  i.getExtras().getInt("id");
+		
+		ImageAdapter imageAdapter = 
+				new ImageAdapter(SingleViewActivity.this);
+		
+		ImageView imageView = (ImageView) findViewById(R.id.imageView1);
+		imageView.setImageResource(imageAdapter.mThumbIds[position]);
+	
 	}
 
 	@Override
